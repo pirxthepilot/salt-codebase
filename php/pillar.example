@@ -1,0 +1,13 @@
+php: 
+  version: '5.5.37-*'
+  default_ini:
+    memory_limit:     '128M'
+    display_errors:   'On'
+    error_reporting:  'E_ALL & ~E_DEPRECATED & ~E_NOTICE'
+    timezone:         'America/Chicago'
+
+php_pear:
+  version: '1:1.10.1-*'
+
+php_mysql:
+  use_mysqlnd: false

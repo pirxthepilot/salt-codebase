@@ -1,0 +1,15 @@
+{%- import_yaml "selinux/defaults.yaml" as default_settings -%}
+{%- set selinux = salt['pillar.get']('selinux', default=default_settings.selinux, merge=True) -%}
+# Managed by Salt - do not edit!
+
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX={{ selinux.mode }}
+# SELINUXTYPE= can take one of three two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted

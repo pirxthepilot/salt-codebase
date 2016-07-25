@@ -1,0 +1,5 @@
+phpcs:
+  version: 2.6.0
+  git_repo: https://github.com/squizlabs/PHP_CodeSniffer.git
+  git_force_reset: False
+  target_dir: /usr/src/PHP_CodeSniffer

@@ -1,0 +1,12 @@
+cis:
+  enable_cis_hardening: True
+  auditd:
+    num_logs: '30'
+    max_log_file: '50'
+    max_log_file_action: 'rotate'
+    space_left: '100'
+    action_mail_acct: 'email@example.com'
+    admin_space_left: '50'
+  cron:
+    force_cron_allow: True
+    force_at_allow: True

@@ -1,0 +1,25 @@
+{%- set source_path = 'salt://cis/files' -%}
+{%- set auditd_rules_d = '/etc/audit/rules.d' -%}
+
+coredumps_file:   /etc/security/limits.d/00-cis_coredumps.conf
+coredumps_source: {{ source_path }}/limitsd-cis_coredumps.conf
+
+fs_blacklist_file:    /etc/modprobe.d/cis_blacklist_filesystems.conf
+fs_blacklist_source:  {{ source_path }}/modprobed-cis_blacklist_filesystems.conf
+
+disallow_protocols_file: /etc/modprobe.d/cis_uncommon_protocols.conf
+disallow_protocols_source: {{ source_path }}/modprobed-cis_uncommon_protocols.conf
+
+sysctl_file:    /etc/sysctl.d/98-salt_cis.conf
+sysctl_source:  {{ source_path }}/sysctld-salt_cis.conf
+
+auditd: 
+  config_file:        /etc/audit/auditd.conf
+  cis_custom_file:    {{ auditd_rules_d }}/cis_custom.rules
+  cis_fixed_file:     {{ auditd_rules_d }}/cis_fixed.rules
+  misc_file:          {{ auditd_rules_d }}/misc.rules
+  config_source:      {{ source_path }}/auditd.conf.jinja
+  cis_custom_script:  {{ source_path }}/audit_rules_custom.sh.jinja
+  cis_fixed_source:   {{ source_path }}/auditrulesd-cis_fixed.rules
+  misc_source:        {{ source_path }}/auditrulesd-misc.rules
+  grub_defaults_file: /etc/default/grub

@@ -1,0 +1,17 @@
+*** Welcome to {{ grains['id'] }} ***
+
+Managed By
+
+   _____       ____  _____ __             __  
+  / ___/____ _/ / /_/ ___// /_____ ______/ /__
+  \__ \/ __ `/ / __/\__ \/ __/ __ `/ ___/ //_/
+ ___/ / /_/ / / /_ ___/ / /_/ /_/ / /__/ ,<   
+/____/\__,_/_/\__//____/\__/\__,_/\___/_/|_|  
+
+
+============
+ ATTENTION!
+============
+
+This system is for the use of authorized personnel only. Unauthorized use of this system is strictly prohibited. All individuals using this computer system expressly consents to having all of their activities on this system monitored and recorded by system personnel.
+

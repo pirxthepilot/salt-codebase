@@ -1,0 +1,22 @@
+{%- import_yaml "realmd/defaults.yaml" as default_settings -%}
+{%- set realmd = salt['pillar.get']('realmd', default=default_settings.realmd, merge=True) -%}
+################
+# REALMD USAGE #
+################
+
+To join this server to the domain, run these commands
+as root:
+
+# realm join {{ realmd.domain_name }} -U <your-ad-username>
+# salt-call state.highstate
+
+<your-ad-username> should be a valid AD account with domain join rights.
+
+The first command does the actual joining, while the 2nd adjusts some
+authentication settings automatically for you.
+
+To test:
+
+$ realm list
+$ id <ad-username>
+$ getent group <ad-group>

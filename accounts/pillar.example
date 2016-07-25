@@ -1,0 +1,14 @@
+custom_groups:
+  group1:
+    system: True
+  group2:
+    system: False
+
+custom_users:
+  user1:
+    system: False
+    groups:
+      - group1
+    remove_groups: True
+    authorized_key: 'accounts:user1.pub'
+    password_from_pillar_files: False

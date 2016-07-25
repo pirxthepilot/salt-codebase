@@ -1,0 +1,4 @@
+networking:
+  options:
+    disable_ipv6:         True
+    disable_ipv4_forward: True

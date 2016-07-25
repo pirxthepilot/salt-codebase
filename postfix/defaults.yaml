@@ -1,0 +1,5 @@
+postfix:
+  managed: True
+  strict_config: True
+  inet_interfaces: localhost
+  relayhost: '[mail.example.com]'

@@ -1,0 +1,6 @@
+httpd:
+  version: '2.4.6-40.el7.centos.1'
+  ssl_cipher_compat: intermediate
+
+mod_ssl:
+  version: '1:2.4.6-40.el7.centos.1'

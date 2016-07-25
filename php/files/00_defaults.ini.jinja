@@ -1,0 +1,10 @@
+{%- import_yaml "php/defaults.yaml" as default_settings -%}
+{%- set default_ini = salt['pillar.get']('php:default_ini', default=default_settings.php.default_ini, merge=True) -%}
+; Default PHP options
+; Deployed by Salt, but can be modified manually
+; Do not delete, or it will be replaced with default settings
+
+memory_limit = {{ default_ini.memory_limit }}
+display_errors = {{ default_ini.display_errors }}
+error_reporting = {{ default_ini.error_reporting }}
+date.timezone= "{{ default_ini.timezone }}"
