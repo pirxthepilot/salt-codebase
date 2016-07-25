@@ -1,0 +1,4 @@
+users:
+
+  user1:
+    password: <sha512 hash>

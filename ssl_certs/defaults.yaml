@@ -1,0 +1,7 @@
+ssl_certs:
+  dir: /etc/httpd/ssl
+  example_com:
+    key_file:       'example.com.key'
+    cer_file:       'example.com.pem'
+    key_source:     'ssl:example.com.key'
+    cer_source:     'ssl:example.com.pem'

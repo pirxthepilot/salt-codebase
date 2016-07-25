@@ -1,0 +1,11 @@
+{%- set servername = salt['grains.get']('id') -%}
+
+filerepo: 
+  listen_port:        '8080'
+  vhost_config:       '/etc/httpd/conf.d/filerepo.conf'
+  root_dir:           '/var/www/repo'
+  ip_address:         '0.0.0.0'
+  servername:         {{ servername }}
+  serveradmin:        'email@example.com'
+  httpd_user:         'apache'
+  httpd_group:        'apache'

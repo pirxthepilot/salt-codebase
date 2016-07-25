@@ -1,0 +1,4 @@
+# By default, no custom sudoers.d entries
+# are defined
+
+sudoers: []

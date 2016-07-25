@@ -1,0 +1,9 @@
+sudoers:
+
+  user1:
+    type: user
+    permissions: "ALL=(ALL) ALL"
+
+  group1:
+    type: group
+    permissions: "ALL=(ALL) ALL"

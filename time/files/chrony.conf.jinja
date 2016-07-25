@@ -1,0 +1,24 @@
+{%- import_yaml "time/defaults.yaml" as default_settings -%}
+{%- set chrony = salt['pillar.get']('chrony', default=default_settings.chrony, merge=True) -%}
+# chrony.conf
+# By default, based on the stock CentOS 7 config
+# Managed by Salt - do not edit!
+#
+
+{% for server in chrony.config.ntpservers -%}
+server {{ server }} {{ chrony.config.options }}
+{% endfor %}
+driftfile {{ chrony.config.driftfile }}
+
+keyfile {{ chrony.config.keyfile }}
+
+{%- if chrony.config.allow is defined -%}
+{% for allowed in chrony.config.get('allow', []) -%}
+allow {{ allowed }}
+{% endfor %}
+{%- endif %}
+
+{% for param in chrony.config.get('otherparams', []) -%}
+{{ param }}
+{% endfor %}
+logdir {{ chrony.config.logdir }}

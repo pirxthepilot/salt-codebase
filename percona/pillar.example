@@ -1,0 +1,2 @@
+percona: 
+  version: '5.6.29-rel76.2.el7'

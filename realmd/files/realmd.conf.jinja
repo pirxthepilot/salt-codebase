@@ -1,0 +1,19 @@
+{%- import_yaml "realmd/defaults.yaml" as default_settings -%}
+{%- set realmd = salt['pillar.get']('realmd', default=default_settings.realmd, merge=True) -%}
+# Realmd.conf
+# Managed by Salt - do not edit!
+
+[users]
+default-home = /home/%D/%u
+default-shell = /bin/bash
+
+[active-directory]
+default-client = sssd
+
+[{{ realmd.domain_name }}]
+computer-ou = {{ realmd.domain_ou }}
+{% if realmd.use_fully_qualified_names -%}
+fully-qualified-names = yes
+{% else -%}
+fully-qualified-names = no
+{% endif -%}

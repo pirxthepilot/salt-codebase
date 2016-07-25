@@ -1,0 +1,11 @@
+{%- import_yaml "cis/paths.yaml" as paths -%}
+#!/bin/bash
+# Generate custom audit.rules entries
+# A saltscript
+
+# Create custom audit rule
+echo "# Auditd Rules based on CIS" > {{ paths.auditd.cis_custom_file }}
+echo "# Managed by Salt - do not edit!" >> {{ paths.auditd.cis_custom_file }}
+echo >> {{ paths.auditd.cis_custom_file }}
+/bin/find / -xdev \( -perm -4000 -o -perm -2000 \) -type f | /bin/awk '{print "-a always,exit -F path=" $1 " -F perm=x -F auid>=500 -F auid!=4294967295 -k privileged" }' >> {{ paths.auditd.cis_custom_file }}
+/bin/chmod 640 {{ paths.auditd.cis_custom_file }}

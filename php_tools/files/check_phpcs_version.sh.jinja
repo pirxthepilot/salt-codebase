@@ -1,0 +1,16 @@
+{%- import_yaml "php_tools/settings.yaml" as settings -%}
+#!/bin/bash
+# Check PHPCS version
+# A Saltscript
+
+PHPCS=/bin/phpcs
+if [ ! -e $PHPCS ]; then
+  echo "changed=yes comment='phpcs not installed'"
+  exit 0
+fi
+
+if [[ $($PHPCS --version) =~ '{{ settings.phpcs.version }}' ]]; then
+  echo "changed=no comment='Already in the correct version (v{{ settings.phpcs.version}})'"
+else
+  echo "changed=yes comment='Wrong phpcs version'"
+fi

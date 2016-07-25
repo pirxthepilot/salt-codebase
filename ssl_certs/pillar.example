@@ -1,0 +1,8 @@
+ssl_certs:
+  dir: /etc/httpd/ssl
+  custom:
+    website1:
+      key_file:   'website1.example.com.key'
+      cer_file:   'website1.example.com.pem'
+      key_source: 'ssl:website1.example.com.key'
+      cer_source: 'ssl:website1.example.com.pem'

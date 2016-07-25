@@ -1,0 +1,25 @@
+{%- import_yaml "app_filerepo/defaults.yaml" as default_settings -%}
+{%- set filerepo = salt['pillar.get']('filerepo', default=default_settings.filerepo, merge=True) -%}
+# ************************************
+# File Repo
+# Contains OS images, files, etc.
+# Managed by Salt - do not edit!
+# ************************************
+
+Listen {{ filerepo.listen_port }}
+
+<VirtualHost *:{{ filerepo.listen_port }}>
+  ServerName {{ filerepo.servername }}
+  ServerAdmin {{ filerepo.serveradmin }} 
+
+  DocumentRoot "{{ filerepo.root_dir }}"
+
+  <Directory "{{ filerepo.root_dir }}">
+    Options Indexes MultiViews
+    AllowOverride None
+    Require all granted
+  </Directory>
+
+  ErrorLog "/var/log/httpd/repo_error_log"
+  CustomLog "/var/log/httpd/repo_access_log" combined
+</VirtualHost>

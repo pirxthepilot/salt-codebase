@@ -1,0 +1,6 @@
+# Note: Only enter file paths! Directories will not be deleted.
+#
+
+files:
+  - /path/to/file1
+  - /path/to/file2
