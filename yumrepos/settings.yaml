@@ -1,6 +1,0 @@
-yumrepos:
-  saltstack_el6: https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm
-  saltstack_el7: https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm
-  webtatic_el6: https://mirror.webtatic.com/yum/el6/latest.rpm
-  webtatic_el7: https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-  percona: http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm

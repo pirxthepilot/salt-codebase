@@ -5,6 +5,7 @@ Creation and maintenance of custom users and groups
 
 ## OS Support
 
+* CentOS 5.x
 * CentOS 6.x
 * CentOS 7.x
 

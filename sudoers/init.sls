@@ -10,8 +10,10 @@
 
   {% if params.type == 'group' %}
     {% set id = '%' ~ name %}
+    {% set getent_arg = 'group' %}
   {% elif params.type == 'user' %}
     {% set id = name %}
+    {% set getent_arg = 'passwd' %}
   {% endif %}
 
 sudoers-{{ name }}:
@@ -23,7 +25,9 @@ sudoers-{{ name }}:
         {{ id }}  {{ params.permissions }}
     - user: root
     - group: root
-    - mode: 640
+    - mode: 440
+    - onlyif:
+      - getent {{ getent_arg }} {{ name }}
 
 {% endfor %}
 

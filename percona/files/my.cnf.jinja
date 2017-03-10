@@ -1,0 +1,18 @@
+{%- import_yaml "percona/defaults.yaml" as default_settings -%}
+{%- set mycnf = salt['pillar.get']('percona_server:mycnf', default=default_settings.percona_server.mycnf, merge=True) -%}
+# my.cnf
+# Managed by Salt - do not edit!
+
+
+[mysql]
+
+{%- for param, value in mycnf.mysql|dictsort %}
+{{ param }} = {{ value }}
+{%- endfor %}
+
+
+[mysqld]
+
+{%- for param, value in mycnf.mysqld|dictsort %}
+{{ param }} = {{ value }}
+{%- endfor %}

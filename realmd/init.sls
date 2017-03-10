@@ -16,12 +16,13 @@ realmd-install:
       - oddjob
       - oddjob-mkhomedir
       - samba-common
+      - samba-common-tools
       - adcli
 
 realmd-restart:
   cmd.wait:
     - name: /sbin/systemctl restart realmd
-    - user: root
+    - runas: root
 
 realmd-config:
   file.managed:
@@ -66,32 +67,6 @@ realmd-disable-fqn:
     - watch_in:
       - service: sssd
 {% endif -%}
-
-# AD sudoers
-# Note that GROUPS added here are also added to
-# AllowGroups in sshd_config via the openssh states
-
-realmd-sudoers-ad:
-  file.managed:
-    - name: /etc/sudoers.d/realm_sudoers
-    - source: salt://realmd/files/realm_sudoers.jinja
-    - template: jinja
-    - user: root
-    - group: root
-    - mode: 640
-    - require:
-      - pkg: realmd-install
-
-# Nagios sudoers
-
-#realmd-sudoers-nagios:
-#  file.managed:
-#    - name: /etc/sudoers.d/nagios
-#    - source: salt://realmd/files/nagios_sudoers
-#    - user: root
-#    - group: root
-#    - require:
-#      - pkg: realmd-install
 
 {% endif %}
 {% endif %}

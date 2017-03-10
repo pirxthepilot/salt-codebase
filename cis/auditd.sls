@@ -17,7 +17,7 @@ auditd:
 auditd-restart:
   cmd.wait:
     - name: /sbin/service auditd restart
-    - user: root
+    - runas: root
 
 
 # Note: Disabling CIS hardening will only remove
@@ -57,7 +57,7 @@ auditd-cis-custom:
   cmd.script:
     - source: {{ paths.auditd.cis_custom_script }}
     - template: jinja
-    - user: root
+    - runas: root
     - creates: {{ paths.auditd.cis_custom_file }}
     - watch_in:
       - cmd: auditd-restart
@@ -92,7 +92,7 @@ auditd-grub-check:
         /bin/grep -q "audit=1" {{ paths.auditd.grub_defaults_file }}
         if [ "$?" -eq 0 ]; then echo "changed=no comment='Grub audit enabled'"; else echo "changed=yes comment='Grub audit disabled'"; fi
     - stateful: True
-    - user: root
+    - runas: root
 
 auditd-grub-mod:
   file.replace:
@@ -109,7 +109,7 @@ auditd-grub-mod:
 auditd-grub-reload:
   cmd.wait:
     - name: /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
-    - user: root
+    - runas: root
     - watch:
       - file: auditd-grub-mod
     - watch_in:

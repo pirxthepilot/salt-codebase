@@ -21,6 +21,12 @@ user-{{ user }}:
     - password: {{ pillar['accounts'][user ~ '.sha512'] }}
     - enforce_password: True
   {% endif %}
+  # Maxdays value (if set)
+  {% if params.maxdays is defined %}
+    - maxdays: {{ params.maxdays }}
+  {% else %}
+    - maxdays: -1
+  {% endif %}
     - require:
       - sls: accounts.groups
 

@@ -20,6 +20,7 @@ cis-sysctl:
 cis-sysctl-reload:
   cmd.wait:
     - name: /sbin/sysctl -p {{ paths.sysctl_file }}
+    - runas: root
     - watch:
       - file: cis-sysctl
 

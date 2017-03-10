@@ -1,0 +1,5 @@
+saltminion:
+  mysql:
+    port: 3306
+    user: saltuser
+    pass: 'plainpassword'

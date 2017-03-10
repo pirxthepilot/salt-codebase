@@ -1,36 +1,34 @@
-{# <CentOS 7> #}
-{%- if grains['os'] == 'CentOS' and grains['osmajorrelease'] == '7'-%}
+{# <CentOS 6 and 7> #}
+{%- if grains['os'] == 'CentOS' and (grains['osmajorrelease'] == '6' or grains['osmajorrelease'] == '7') -%}
 
 
 {%- import_yaml "php/defaults.yaml" as default_settings -%}
 {%- set php = salt['pillar.get']('php', default=default_settings.php, merge=True) -%}
 {%- set php_pear = salt['pillar.get']('php_pear', default=default_settings.php_pear, merge=True) -%}
-{%- set php_mysql = salt['pillar.get']('php_mysql', default=default_settings.php_mysql, merge=True) -%}
+{%- set php_pecl_igbinary = salt['pillar.get']('php_pecl_igbinary', default=default_settings.php_pecl_igbinary, merge=True) -%}
+{%- set php_pecl_imagick = salt['pillar.get']('php_pecl_imagick', default=default_settings.php_pecl_imagick, merge=True) -%}
 
+# PHP main
+#
 
-{# Option between using php55w-mysql and php55w-mysqlnd (MySQL native driver) #}
-{%- if php_mysql.use_mysqlnd is sameas true -%}
-{%- set php_mysql_pkg = "php55w-mysqlnd" -%}
-{%- else -%}
-{%- set php_mysql_pkg = "php55w-mysql" -%}
-{%- endif %}
 
 include:
-  - yumrepos.webtatic
+  - php.php_cli
   - php.config
   - httpd
+
+# Note: php-packages depends on php_cli.sls, which first installs the most basic
+# PHP packages (php-cli and php-common)
 
 php-packages:
   pkg.installed:
     - require:
-      - pkg: webtatic-repo
+      - pkg: php-cli
     - watch_in:
       - service: httpd
     - pkgs:
       - php55w: {{ php.version }}
       - php55w-bcmath: {{ php.version }}
-      - php55w-cli: {{ php.version }}
-      - php55w-common: {{ php.version }}
       - php55w-devel: {{ php.version }}
       - php55w-gd: {{ php.version }}
       - php55w-imap: {{ php.version }}
@@ -42,10 +40,12 @@ php-packages:
       #- php55w-pear: {{ php_pear.version }}
       - php55w-pdo: {{ php.version }}
       - php55w-process: {{ php.version }}
+      - php55w-pecl-igbinary: {{ php_pecl_igbinary.version }}
+      - php55w-pecl-imagick: {{ php_pecl_imagick.version }}
       - php55w-soap: {{ php.version }}
       - php55w-xml: {{ php.version }}
-      - {{ php_mysql_pkg }}: {{ php.version }}
+      - php55w-mysqlnd: {{ php.version }}
 
 
-{# </CentOS 7> #}
+{# </CentOS 6 and 7> #}
 {%- endif -%}

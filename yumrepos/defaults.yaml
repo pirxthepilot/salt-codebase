@@ -1,0 +1,22 @@
+yumrepos:
+
+  # By default, use external repos
+  use_internal: False
+
+  # Parameters for external repos
+  external:
+    saltstack_el5: https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm
+    saltstack_el6: https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm
+    saltstack_el7: https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm
+    webtatic_el6: http://mirror.webtatic.com/yum/el6/latest.rpm
+    webtatic_el7: http://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+    percona: http://www.percona.com/downloads/percona-release/redhat/0.1-3/percona-release-0.1-3.noarch.rpm
+    pbiso:
+      baseurl: http://repo.pbis.beyondtrust.com/yum/pbiso/$basearch
+      gpgkey: http://repo.pbis.beyondtrust.com/yum/RPM-GPG-KEY-pbis
+
+  # Parameters for internal repos
+  internal:
+    repo_url_http: http://repo.example.com/pulp/repos
+    repo_url_https: https://repo.example.com/pulp/repos
+    rpm_gpg_url: https://repo.example.com/pulp/static/rpm-gpg

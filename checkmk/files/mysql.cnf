@@ -1,0 +1,6 @@
+# percona-nagios-plugins config file
+# Deployed by Salt, but can be manually edited
+
+[client]
+user =
+password =

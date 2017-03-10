@@ -1,13 +1,9 @@
 include:
+  - yumrepos.centos
   - base_install
   - salt.minion
-#  - networking
-#  - time
-#  - openssh
-#  - selinux
-#  - cis
-  - vmware_tools
-#  - postfix
-#  - openssl
+  - networking
+  - openssh
+  - openssl
   - accounts
   - sudoers

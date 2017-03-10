@@ -1,5 +1,5 @@
 # By default, no custom users and groups are
 # defined
 
-custom_groups: []
-custom_users: []
+custom_groups: {}
+custom_users: {}

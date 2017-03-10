@@ -1,0 +1,16 @@
+#################
+# SSO WITH PBIS #
+#################
+
+To join this server to the domain, run these commands
+as root:
+
+# /root/pbis_join.sh <your-ad-username>
+
+<your-ad-username> should be a valid AD account with domain join rights.
+
+To test:
+
+$ domainjoin-cli query
+$ id <ad-username>
+$ getent group <ad-group>

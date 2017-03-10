@@ -93,7 +93,7 @@ See individual state files below
     1.1 Filesystem Configuration                               |
     1.2 Configure Software Updates                             |
     1.3 Advanced Intrusion Detection Environment (AIDE)        |
-    1.4 Configure SELinux                                      | DONE; Permissive by default
+    1.4 Configure SELinux                                      | DONE
     1.5 Secure Boot Settings                                   | DONE
     1.6 Additional Process Hardening                           | DONE
 
