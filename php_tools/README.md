@@ -5,20 +5,17 @@ Installs and configures various PHP support tools
 
 ## OS Support
 
-* CentOS 7 only
+* CentOS 6 (composer only)
+* CentOS 7
 
 
 ## State Files
 
 * `composer.sls`
 
-    * Installs the composer script from the local salt:// repo
+    * Installs the composer script from the local repo
     * Managed file:
         * `/usr/local/bin/composer`
-
-* `twig.sls`
-
-    * Installs Twig via pear
 
 * `phpcs.sls`
 
@@ -29,3 +26,4 @@ Installs and configures various PHP support tools
 ## Dependencies
 
 * `php`
+* `php.php_cli`

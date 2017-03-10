@@ -1,5 +1,9 @@
 phpcs:
   version: 2.6.0
   git_repo: https://github.com/squizlabs/PHP_CodeSniffer.git
-  git_force_reset: False
+  git_force_reset: True
   target_dir: /usr/src/PHP_CodeSniffer
+
+composer:
+  source: http://repo.example.com/salt/composer
+  source_hash: sha1=b6b3fb668c913c874f891601eaac6eb08b060416

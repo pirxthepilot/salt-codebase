@@ -5,7 +5,7 @@ cis:
     max_log_file: '50'
     max_log_file_action: 'rotate'
     space_left: '100'
-    action_mail_acct: 'email@example.com'
+    action_mail_acct: 'admin@example.com'
     admin_space_left: '50'
   cron:
     force_cron_allow: True

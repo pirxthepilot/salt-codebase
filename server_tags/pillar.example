@@ -1,0 +1,6 @@
+# Manual tag declarations
+server_tags:
+  business_criticality: low
+  phi: True
+  public: True
+  stable: True

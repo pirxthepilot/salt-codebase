@@ -1,0 +1,4 @@
+pbis:
+  always_latest: False
+  domain_name: 'example.com'
+  domain_ou: 'OU=Development,OU=Linux,OU=Domain Servers,DC=example,DC=com'

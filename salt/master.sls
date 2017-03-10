@@ -7,7 +7,7 @@ include:
 salt-master:
   pkg.installed:
     - require:
-      - pkg: saltstack-repo
+      - sls: yumrepos.saltstack
   service.running:
     - enable: True
     - watch:

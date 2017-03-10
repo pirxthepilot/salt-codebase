@@ -1,0 +1,15 @@
+{%- import_yaml "pbis/defaults.yaml" as default_settings -%}
+{%- set pbis = salt['pillar.get']('pbis', default=default_settings.pbis, merge=True) -%}
+
+#!/bin/bash
+# Domain join script using PBIS
+# Managed by Salt - do not edit!
+
+if [ -z "$1" ]; then
+  echo "  Usage: ./pbis_join.sh <ad account with domain join rights>"
+  exit 0
+fi
+
+domainjoin-cli join --ou "{{ pbis.domain_ou }}" {{ pbis.domain_name }} $1 && \
+/opt/pbis/bin/config LoginShellTemplate /bin/bash && \
+/opt/pbis/bin/config AssumeDefaultDomain true

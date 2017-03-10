@@ -1,26 +1,35 @@
+timezone:
+  name: 'America/Chicago'
+  utc: False
+
+ntpservers:
+  - 0.us.pool.ntp.org
+  - 1.us.pool.ntp.org
+  - 2.us.pool.ntp.org
+  - 3.us.pool.ntp.org
+
 chrony:
   config:
-    ntpservers:  [
-                 "0.us.pool.ntp.org",
-                 "1.us.pool.ntp.org",
-                 "2.us.pool.ntp.org",
-                 "3.us.pool.ntp.org"
-                 ]
     options: iburst
     logdir: /var/log/chrony
     keyfile: /etc/chrony.keys
     driftfile: /var/lib/chrony/drift
-    otherparams: [
-                 "stratumweight 0",
-                 "rtcsync",
-                 "makestep 10 3",
-                 "bindcmdaddress 127.0.0.1",
-                 "commandkey 1",
-                 "generatecommandkey",
-                 "noclientlog",
-                 "logchange 0.5",
-                  ]
+    otherparams:
+      - stratumweight 0
+      - rtcsync
+      - makestep 10 3
+      - bindcmdaddress 127.0.0.1
+      - commandkey 1
+      - generatecommandkey
+      - noclientlog
+      - logchange 0.5
 
-timezone:
-  name: 'America/Chicago'
-  utc: False
+ntp:
+  config:
+    options: iburst
+    driftfile: /var/lib/ntp/drift
+    otherparams:
+      - restrict default kod nomodify notrap nopeer noquery
+      - restrict 127.0.0.1
+      - includefile /etc/ntp/crypto/pw
+      - keys /etc/ntp/keys

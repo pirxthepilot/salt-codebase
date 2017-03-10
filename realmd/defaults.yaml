@@ -1,10 +1,7 @@
 realmd:
   use_fully_qualified_names: False
   domain_name: 'example.com'
-  domain_ou: 'OU=Linux,OU=Domain Servers,DC=example,DC=com'
-  realm_sudoers:
+  domain_ou: 'OU=Development,OU=Linux,OU=Domain Servers,DC=example,DC=com'
+  ad_sudoers:
     groups:
-      - linux_admins
-    users:
-      - user1 
-      - user2
+      - linuxadmins

@@ -1,9 +1,17 @@
+{%- import_yaml "salt/defaults.yaml" as default_settings -%}
+{%- set saltminion = salt['pillar.get']('saltminion', default=default_settings.saltminion, merge=True) -%}
 # Salt MySQL settings
-# Managed by Salt, but can be manually edited
+# Managed by Salt - do not edit!
+
+# Notes:
+# - mysql.host is always localhost. We do not want each salt minion to
+#   control database servers other than itself
+# - mysql.user and mysql.pass should not be declared here! Instead, these
+#   are declared as pillars which override the settings in this config file
 
 mysql.host: 'localhost'
-mysql.port: 3306
-mysql.user: 'root'
-mysql.pass: ''
+mysql.port: {{ saltminion.mysql.port }}
+#mysql.user:
+#mysql.pass:
 mysql.db: 'mysql'
 mysql.charset: 'utf8'

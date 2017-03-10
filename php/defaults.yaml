@@ -1,5 +1,9 @@
+# Note: Version numbers are shared across CentOS 6 and 7 so please
+# make sure you specify a string that is compatible on both OSes
+# (e.g. '5.5.38-1.*' instead of '5.5.38-1.w7')
+
 php: 
-  version: '5.5.37-*'
+  version: 5.5.38-1.* 
   default_ini:
     memory_limit:     '128M'
     display_errors:   'On'
@@ -9,5 +13,8 @@ php:
 php_pear:
   version: '1:1.10.1-*'
 
-php_mysql:
-  use_mysqlnd: false
+php_pecl_igbinary:
+  version: '1.2.1-*'
+
+php_pecl_imagick:
+  version: '3.4.2-*'

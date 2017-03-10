@@ -12,3 +12,4 @@ custom_users:
     remove_groups: True
     authorized_key: 'accounts:user1.pub'
     password_from_pillar_files: False
+    maxdays: -1

@@ -2,10 +2,10 @@
 
 filerepo: 
   listen_port:        '8080'
-  vhost_config:       '/etc/httpd/conf.d/filerepo.conf'
+  vhost_config:       '/etc/httpd/conf.d/99_filerepo.conf'
   root_dir:           '/var/www/repo'
   ip_address:         '0.0.0.0'
   servername:         {{ servername }}
-  serveradmin:        'email@example.com'
+  serveradmin:        'admin@example.com'
   httpd_user:         'apache'
   httpd_group:        'apache'

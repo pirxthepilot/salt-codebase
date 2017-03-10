@@ -4,6 +4,8 @@ openssh:
   {% if openssh.server is defined %}
   pkg.latest:
     - name: {{ openssh.server }}
+    #- version: '6.6.1p1-23.*'
+    #- hold: True
   {% endif %}
   service.running:
     - enable: True

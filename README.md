@@ -1,12 +1,6 @@
-# Salt Code Base
+# SaltStack Code Base
 
-Salt states code base
-
-
-## OS Support
-
-* CentOS 6.x - partial
-* CentOS 7.x - full
+This repo contains the main Salt states code base.
 
 
 ## Branch - Environment Mappings

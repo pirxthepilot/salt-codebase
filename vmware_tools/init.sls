@@ -8,7 +8,7 @@ include:
 {%- endif -%}
 
 
-{% if 'VMware' in grains["manufacturer"] %}
+{% if grains['virtual'].lower() == 'vmware' %}
 open-vm-tools:
   pkg.installed: []
   service.running:
@@ -16,6 +16,6 @@ open-vm-tools:
     - enable: True
   {%- if grains['os'] == 'CentOS' and grains['osmajorrelease'] == '6' %}
     - require:
-      - pkg: epel-release
+      - sls: yumrepos.epel
   {%- endif -%}
 {% endif %}

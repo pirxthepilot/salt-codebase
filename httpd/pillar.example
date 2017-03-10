@@ -1,6 +1,9 @@
 httpd:
-  version: '2.4.6-40.el7.centos.1'
+  version_el6: '2.2.15-56.el6.centos.3'
+  version_el7: '2.4.6-45.el7.centos'
   ssl_cipher_compat: intermediate
+  allow_updates: True
 
 mod_ssl:
-  version: '1:2.4.6-40.el7.centos.1'
+  version_el6: '2.2.15-56.el6.centos.3'
+  version_el7: '2.4.6-45.el7.centos'

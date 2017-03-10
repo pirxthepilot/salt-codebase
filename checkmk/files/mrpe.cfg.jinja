@@ -1,0 +1,8 @@
+{%- import_yaml "checkmk/defaults.yaml" as default_settings -%}
+{%- set checkmk = salt['pillar.get']('checkmk', default=default_settings.checkmk, merge=True) -%}
+# MRPE checks
+# Managed by Salt - do not edit!
+
+{% for servicename, command in checkmk.mrpe.config.items() -%}
+{{ servicename }} {{ command }}
+{% endfor -%}

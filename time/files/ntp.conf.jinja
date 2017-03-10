@@ -1,0 +1,16 @@
+{%- import_yaml "time/defaults.yaml" as default_settings -%}
+{%- set ntp = salt['pillar.get']('ntp', default=default_settings.ntp, merge=True) -%}
+{%- set ntpservers = salt['pillar.get']('ntpservers', default=default_settings.ntpservers, merge=False) -%}
+# ntp.conf
+# Based on the stock CentOS 6 config
+# Managed by Salt - do not edit!
+#
+
+{% for server in ntpservers -%}
+server {{ server }} {{ ntp.config.options }}
+{% endfor %}
+driftfile {{ ntp.config.driftfile }}
+
+{% for param in ntp.config.get('otherparams', []) -%}
+{{ param }}
+{% endfor %}

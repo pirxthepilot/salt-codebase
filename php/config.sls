@@ -1,5 +1,5 @@
-{# <CentOS 7> #}
-{%- if grains['os'] == 'CentOS' and grains['osmajorrelease'] == '7'-%}
+{# <CentOS 6 and 7> #}
+{%- if grains['os'] == 'CentOS' and (grains['osmajorrelease'] == '6' or grains['osmajorrelease'] == '7') -%}
 
 
 include:
@@ -24,6 +24,6 @@ php-defaults-ini:
       - service: httpd
 
 
-{# </CentOS 7> #}
+{# </CentOS 6 and 7> #}
 {%- endif -%}
 

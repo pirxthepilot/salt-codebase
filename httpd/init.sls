@@ -15,7 +15,10 @@ include:
 
 httpd:
   pkg.installed:
-    - version: {{ version }}
+    - pkgs:
+      - httpd: {{ version }}
+      - httpd-tools: {{ version }}
+    - allow_updates: {{ httpd.allow_updates }}
     - watch_in:
       - service: httpd
   service.running:
